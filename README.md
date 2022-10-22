@@ -36,10 +36,10 @@ enumerate input as i
   
 input in is_even print "even" not in print "odd" 
  
-Example fizzbuzz: 
-int language fizz accepts x st x%3=0 
-int language buzz accepts x st x%5=0 
-enumerate input as i  
-    in fizz print "fizz"   
-    in buzz print "buzz"  
+Example fizzbuzz:  
+int language fizz accepts x st x%3=0   
+int language buzz accepts x st x%5=0  
+enumerate input as i   
+    in fizz print "fizz"    
+    in buzz print "buzz"   
     loner print i  
