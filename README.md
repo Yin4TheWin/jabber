@@ -1,3 +1,5 @@
+###Why is it called Jabber?  
+Because the gimmick of this programming languages is creating mini-languages, and the definition of jabber is to "talk rapidly and excitedly but with little sense". Which I think is both funny and fitting.  
 This is just brain mush, please ignore  
 core data types:  
 int  

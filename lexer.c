@@ -77,7 +77,7 @@ token* collect_Id(lexer_state* lexer){
     int type=0;
 
     //Sorry this is about to get a bit ugly...
-    if(strcmp(value,"int")==0 || strcmp(value,"string")==0 || strcmp(value,"list")==0 || strcmp(value,"language")==0)
+    if(strcmp(value,"int")==0 || strcmp(value,"float")==0 || strcmp(value,"string")==0 || strcmp(value,"list")==0 || strcmp(value,"language")==0)
         type=Id;
     else if(strcmp(value,"forall")==0 || strcmp(value,"exists")==0 || strcmp(value,"unique")==0)
         type=Quantifier;
@@ -85,6 +85,8 @@ token* collect_Id(lexer_state* lexer){
         type=Condition;
     else if(strcmp(value,"in")==0 || strcmp(value,"rejected")==0 || strcmp(value,"loner")==0)
         type=Containment;
+    else if(strcmp(value,"union")==0 || strcmp(value,"concat")==0 || strcmp(value,"star")==0)
+        type=Connective;
     else if(strcmp(value,"st")==0)
         type=SuchThat;
     else if(strcmp(value,"iterate")==0)
@@ -128,6 +130,9 @@ token* lexer_get_next_token(lexer_state* lexer){
                 break;
             case ',':
                 return advance_with_token(lexer, Comma);
+                break;
+            case '.':
+                return advance_with_token(lexer, Point);
                 break;
             case '"':
                 return collect_string(lexer, Double);

@@ -2,7 +2,7 @@
 #define TOKEN_H
 typedef struct TOKEN{
     enum {
-    Id, Quantifier, Condition, Assign, Iter, As, Comma, Containment, Name, EOF,
+    Id, Quantifier, Condition, Assign, Iter, As, Containment, Connective, Name, EOF,
     Int, Float, Str, List, Lang, Fun,
     All, Exist, Unique, 
     SuchThat, In, Accepts, Rejects, Loner, 
@@ -10,7 +10,7 @@ typedef struct TOKEN{
     And, Or, Xor, 
     Eq, Neq, Lt, Gt, Leq, Geq, 
     Add, Sub, Mult, Div, Mod,
-    Lparen, Rparen,
+    Lparen, Rparen, Comma, Point
     } type;
 
     char* value;
