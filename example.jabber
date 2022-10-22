@@ -1,1 +1,13 @@
-int x = 0
+string s = "hello world"
+
+int list language all_even accepts forall x st x%2=0
+int list language all_odd rejects forall x st x%2=0
+int list language accept_everything accepts all_even union all_odd
+
+int list test = [4,5,6]
+
+test in all_even print "even"
+rejected print "not even"
+in all_odd print "odd"
+rejected print "not odd"
+loner print "wtf"
