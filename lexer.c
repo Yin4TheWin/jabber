@@ -56,7 +56,7 @@ token* collect_string(lexer_state* lexer, int type_of_quote){
         strcat(value, str);
         advance_state(lexer);
     }
-    
+
     return init_token(Str, value);
 }
 
@@ -79,6 +79,21 @@ token* lexer_get_next_token(lexer_state* lexer){
         if(isalnum(lexer->current))
             return collect_Id(lexer);
         switch(lexer->current){
+            case '*':
+                return advance_with_token(lexer, Mult);
+                break;
+            case '/':
+                return advance_with_token(lexer, Div);
+                break;
+            case '%':
+                return advance_with_token(lexer, Mod);
+                break;
+            case '+':
+                return advance_with_token(lexer, Add);
+                break;
+            case '-':
+                return advance_with_token(lexer, Sub);
+                break;
             case '=':
                 return advance_with_token(lexer, Assign);
                 break;
