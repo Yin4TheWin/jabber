@@ -60,6 +60,10 @@ token* collect_string(lexer_state* lexer, int type_of_quote){
     return init_token(Str, value);
 }
 
+unsigned int hash_string(char* s){
+
+}
+
 token* collect_Id(lexer_state* lexer){
     char curr=lexer->current;
     char* value=calloc(1,sizeof(char));
@@ -70,7 +74,26 @@ token* collect_Id(lexer_state* lexer){
         strcat(value, str);
         advance_state(lexer);
     }
-    return init_token(Id, value);
+    int type=0;
+
+    //Sorry this is about to get a bit ugly...
+    if(strcmp(value,"int")==0 || strcmp(value,"string")==0 || strcmp(value,"list")==0 || strcmp(value,"language")==0)
+        type=Id;
+    else if(strcmp(value,"forall")==0 || strcmp(value,"exists")==0 || strcmp(value,"unique")==0)
+        type=Quantifier;
+    else if(strcmp(value,"accepts")==0 || strcmp(value,"rejects")==0)
+        type=Condition;
+    else if(strcmp(value,"in")==0 || strcmp(value,"rejected")==0 || strcmp(value,"loner")==0)
+        type=Containment;
+    else if(strcmp(value,"st")==0)
+        type=SuchThat;
+    else if(strcmp(value,"iterate")==0)
+        type=Iter;
+    else if(strcmp(value,"as")==0)
+        type=As;
+    else
+        type=Name;
+    return init_token(type, value);
 }
 
 token* lexer_get_next_token(lexer_state* lexer){
@@ -102,6 +125,9 @@ token* lexer_get_next_token(lexer_state* lexer){
                 break;
             case ')':
                 return advance_with_token(lexer, Rparen);
+                break;
+            case ',':
+                return advance_with_token(lexer, Comma);
                 break;
             case '"':
                 return collect_string(lexer, Double);

@@ -32,7 +32,7 @@ accepts/rejects conditions:
 enumerate input as i   
     in fizz print "fizz"   
     in buzz print "buzz"   
-    rejects print i    
+    rejected print i    
   
 input in is_even print "even" not in print "odd" 
  
