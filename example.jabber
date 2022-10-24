@@ -1,4 +1,4 @@
-string s = "hello world"
+* string s = "hello world"
 
 int list language all_even accepts forall x st x%2=0
 int list language all_odd rejects forall x st x%2=0

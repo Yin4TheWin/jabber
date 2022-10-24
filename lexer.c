@@ -24,7 +24,7 @@ lexer_state* init(char* input)
 }
 
 int valid(lexer_state* lexer){
-    return lexer->index<strlen(lexer->input);
+    return lexer->index<strlen(lexer->input)&&lexer->current!='\0';
 }
 
 void advance_state(lexer_state* lexer){
@@ -41,8 +41,9 @@ void ignore_whitespace(lexer_state* lexer){
 }
 
 token* advance_with_token(lexer_state* lexer, int token_type){
+    token* token=init_token(token_type, to_string(lexer));
     advance_state(lexer);
-    return init_token(token_type, to_string(lexer));
+    return token;
 }
 
 token* collect_string(lexer_state* lexer, int type_of_quote){
