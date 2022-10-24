@@ -48,24 +48,29 @@ token* advance_with_token(lexer_state* lexer, int token_type){
 
 token* collect_string(lexer_state* lexer, int type_of_quote){
     advance_state(lexer);
+
     char curr=lexer->current;
+
     char* value=calloc(1,sizeof(char));
+    value[0]='\0';
 
     while((curr!='"'&&type_of_quote==Double) || (curr!='\''&&type_of_quote==Single)){
         char* str=to_string(lexer);
-        value=realloc(value, (strlen(value)+strlen(str)+1));
+        value=realloc(value, (strlen(value)+strlen(str)+1)*sizeof(char));
         strcat(value, str);
         advance_state(lexer);
     }
+
+    advance_state(lexer);
 
     return init_token(Str, value);
 }
 
 token* collect_Id(lexer_state* lexer){
-    char curr=lexer->current;
     char* value=calloc(1,sizeof(char));
+    value[0]='\0';
 
-    while(isalnum(lexer->current)){
+    while(isalnum(lexer->current) || lexer->current=='_'){
         char* str=to_string(lexer);
         value=realloc(value, (strlen(value)+strlen(str)+1));
         strcat(value, str);
