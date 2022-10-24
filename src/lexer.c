@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 enum{
-    Single, Double
+    Single_Quote, Double_Quote
 };
 
 char* to_string(lexer_state* lexer){
@@ -52,7 +52,7 @@ token* collect_string(lexer_state* lexer, int type_of_quote){
     char* value=calloc(1,sizeof(char));
     value[0]='\0';
 
-    while((lexer->current!='"'&&type_of_quote==Double) || (lexer->current!='\''&&type_of_quote==Single)){
+    while((lexer->current!='"'&&type_of_quote==Double_Quote) || (lexer->current!='\''&&type_of_quote==Single_Quote)){
         char* str=to_string(lexer);
         value=realloc(value, (strlen(value)+strlen(str)+1)*sizeof(char));
         strcat(value, str);
@@ -141,10 +141,10 @@ token* get_next_token(lexer_state* lexer){
                 return advance_with_token(lexer, Point);
                 break;
             case '"':
-                return collect_string(lexer, Double);
+                return collect_string(lexer, Double_Quote);
                 break;
             case '\'':
-                return collect_string(lexer, Single);
+                return collect_string(lexer, Single_Quote);
                 break;
         }
     }
