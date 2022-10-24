@@ -128,6 +128,12 @@ token* get_next_token(lexer_state* lexer){
             case ')':
                 return advance_with_token(lexer, Rparen);
                 break;
+            case '[':
+                return advance_with_token(lexer, LBracket);
+                break;
+            case ']':
+                return advance_with_token(lexer, RBracket);
+                break;
             case ',':
                 return advance_with_token(lexer, Comma);
                 break;

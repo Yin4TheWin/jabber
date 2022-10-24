@@ -10,7 +10,7 @@ typedef struct TOKEN{
     And, Or, Xor, 
     Eq, Neq, Lt, Gt, Leq, Geq, 
     Add, Sub, Mult, Div, Mod,
-    Lparen, Rparen, Comma, Point
+    Lparen, Rparen, LBracket, RBracket, Comma, Point
     } type;
 
     char* value;
