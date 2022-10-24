@@ -14,7 +14,7 @@ void advance_state(lexer_state* lexer);
 
 void ignore_whitespace(lexer_state* lexer);
 
-token* lexer_get_next_token(lexer_state* lexer);
+token* get_next_token(lexer_state* lexer);
 
 token* collect_string(lexer_state* lexer, int type_of_quote);
 

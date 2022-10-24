@@ -8,7 +8,7 @@ enum{
 };
 
 char* to_string(lexer_state* lexer){
-    char str[2];
+    char* str=malloc(2*sizeof(char));
     str[0]=lexer->current;
     str[1]='\0';
     return str;
@@ -60,10 +60,6 @@ token* collect_string(lexer_state* lexer, int type_of_quote){
     return init_token(Str, value);
 }
 
-unsigned int hash_string(char* s){
-
-}
-
 token* collect_Id(lexer_state* lexer){
     char curr=lexer->current;
     char* value=calloc(1,sizeof(char));
@@ -98,7 +94,7 @@ token* collect_Id(lexer_state* lexer){
     return init_token(type, value);
 }
 
-token* lexer_get_next_token(lexer_state* lexer){
+token* get_next_token(lexer_state* lexer){
     while(valid(lexer)){
         ignore_whitespace(lexer);
         if(isalnum(lexer->current))
@@ -142,5 +138,5 @@ token* lexer_get_next_token(lexer_state* lexer){
                 break;
         }
     }
-    return init_token(EOF, "\0");
+    return NULL;
 }
