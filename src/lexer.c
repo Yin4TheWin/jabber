@@ -1,7 +1,4 @@
 #include "header/lexer.h"
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 
 enum{
     Single_Quote, Double_Quote

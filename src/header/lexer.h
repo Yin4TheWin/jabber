@@ -1,6 +1,10 @@
 #ifndef LEXER_H
 #define LEXER_H
 #include "token.h"
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
 typedef struct LEXER_STATE
 {
     char current;
