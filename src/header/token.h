@@ -1,5 +1,6 @@
 #ifndef TOKEN_H
 #define TOKEN_H
+#include <stdlib.h>
 typedef struct TOKEN{
     enum {
     Id, Quantifier, Condition, Assign, Iter, As, Containment, Connective, Name, EOF,
